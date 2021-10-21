@@ -1,0 +1,34 @@
+{
+  "name": "wasm-wallet",
+  "license": "MIT OR Apache-2.0",
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack --mode=production",
+    "ganache": "ganache-cli --blockTime 2 -m \"stuff inherit faith park genre spread huge knee ecology private marble supreme\""
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.159",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
+    "@wasm-tool/wasm-pack-plugin": "1.6.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^6.4.0",
+    "file-loader": "^6.2.0",
+    "ganache-cli": "^6.12.2",
+    "html-webpack-plugin": "^5.4.0",
+    "style-loader": "^3.3.0",
+    "text-encoding": "^0.7.0",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "bn.js": "^5.2.0",
+    "buffer": "^6.0.3",
+    "ethjs-unit": "^0.1.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4"
+  }
+}
