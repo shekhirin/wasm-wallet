@@ -1,8 +1,8 @@
-use std::convert::TryInto;
 use std::str::FromStr;
 use std::sync::Arc;
 
 use async_trait::async_trait;
+use bn_rs::BN;
 use ethers::middleware::gas_oracle::GasOracleError;
 use ethers::prelude::gas_oracle::{EthGasStation, GasOracle, GasOracleMiddleware};
 use ethers::prelude::*;
@@ -10,9 +10,6 @@ use ethers::signers::coins_bip39::English;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen_futures::future_to_promise;
 
-use bn::BN;
-
-pub mod bn;
 pub mod utils;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -139,7 +136,7 @@ impl Wallet {
         let client = self.client.clone();
 
         future_to_promise(async move {
-            let amount: U256 = amount.try_into()?;
+            let amount = U256::try_from(amount)?;
 
             let address = if let Some(address) = address {
                 Address::from_str(address.as_str()).map_err(|err| err.to_string())?
