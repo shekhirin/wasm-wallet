@@ -1,8 +1,6 @@
 import {Wallet} from "./pkg"
 import React from "react"
-import BN from "bn.js"
-// @ts-ignore
-import ethjsUnit from "ethjs-unit"
+import {utils, BigNumber} from "ethers"
 
 
 interface Props {
@@ -10,7 +8,7 @@ interface Props {
 }
 
 interface State {
-    balance?: BN
+    balance?: BigNumber
 }
 
 export default class extends React.Component<Props, State> {
@@ -36,6 +34,6 @@ export default class extends React.Component<Props, State> {
     }
 
     render() {
-        return <span>Balance: {this.state.balance ? ethjsUnit.fromWei(this.state.balance, 'ether') : ''}</span>
+        return <span>Balance: {this.state.balance ? utils.formatEther(this.state.balance) : ''}</span>
     }
 }

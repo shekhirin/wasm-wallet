@@ -34,4 +34,4 @@ js-sys = "0.3.55"
 primitive-types = { version = "0.10.1", features = ["fp-conversion"] }
 async-trait = "0.1.51"
 
-bn-rs = { version = "0.1.0" }
+bn-rs = { version = "0.2.1" }

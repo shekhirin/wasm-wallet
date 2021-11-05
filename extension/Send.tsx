@@ -1,6 +1,6 @@
 import React from "react"
 import {Wallet} from "./pkg"
-import BN from "bn.js"
+import {BigNumber} from "ethers"
 
 
 interface Props {
@@ -23,7 +23,7 @@ export default class extends React.Component<Props, State> {
         e.preventDefault()
 
         if (this.state.amount) {
-            const amount = new BN(this.state.amount, 10)
+            const amount = BigNumber.from(this.state.amount)
             console.log(await this.props.wallet.send(this.state.address, amount))
         }
     }

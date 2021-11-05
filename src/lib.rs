@@ -2,7 +2,7 @@ use std::str::FromStr;
 use std::sync::Arc;
 
 use async_trait::async_trait;
-use bn_rs::BN;
+use bn_rs::BigNumber;
 use ethers::middleware::gas_oracle::GasOracleError;
 use ethers::prelude::gas_oracle::{EthGasStation, GasOracle, GasOracleMiddleware};
 use ethers::prelude::*;
@@ -127,12 +127,12 @@ impl Wallet {
             client
                 .get_balance(client.inner().address(), None)
                 .await
-                .map(|balance| BN::from(balance).into())
+                .map(|balance| BigNumber::from(balance).into())
                 .map_err(|e| e.to_string().into())
         })
     }
 
-    pub fn send(&self, address: Option<String>, amount: BN) -> js_sys::Promise {
+    pub fn send(&self, address: Option<String>, amount: BigNumber) -> js_sys::Promise {
         let client = self.client.clone();
 
         future_to_promise(async move {
